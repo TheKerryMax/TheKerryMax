@@ -1,35 +1,36 @@
+/* Base styles */
 body {
   background-color: #0a0f1c;
   color: #00ffff;
   font-family: Arial, sans-serif;
   text-align: center;
   margin: 0;
-  padding-top: 120px;
+  padding-top: 8rem; /* use rem instead of px */
 }
 
 /* Main container */
 .container {
   max-width: 1000px;
   margin: auto;
-  padding: 20px;
+  padding: 2rem;
 }
 
 /* Main title */
 h1 {
-  font-size: 52px;
-  margin-bottom: 8px;
+  font-size: 3rem; /* ~48px */
+  margin-bottom: 0.5rem;
 }
 
 /* Subtitle */
 h2 {
-  font-size: 28px;
+  font-size: 1.75rem; /* ~28px */
   color: #9ffcff;
-  margin-top: 10px;
+  margin-top: 0.5rem;
 }
 
 /* Paragraph text */
 p {
-  font-size: 18px;
+  font-size: 1.125rem; /* ~18px */
   color: #c9fefe;
   line-height: 1.7;
 }
@@ -39,32 +40,34 @@ p {
   width: 80px;
   height: 4px;
   background-color: #00ffff;
-  margin: 20px auto;
+  margin: 1.25rem auto;
   border-radius: 10px;
 }
 
 /* Profile image */
 img {
-  width: 280px;
-  margin-top: 30px;
+  width: 18rem; /* ~280px */
+  max-width: 80%;
+  margin-top: 2rem;
   border-radius: 12px;
   box-shadow: 0 0 20px #00ffff55;
 }
 
-@media (max-width: 600px) {
+/* Responsive styles */
+@media (max-width: 768px) {
   body {
-    padding-top: 60px;
+    padding-top: 4rem;
   }
 
   h1 {
-    font-size: 136px;
+    font-size: 2rem; /* smaller on mobile */
   }
 
   p {
-    font-size: 80px;
+    font-size: 1rem; /* smaller on mobile */
   }
 
   img {
-    width: 200px;
+    width: 14rem; /* smaller on mobile */
   }
 }
