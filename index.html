@@ -5,27 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Kerry Max | Creative Portfolio</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css">
-
     <style>
         :root {
             --primary: #00fff0;
-            --primary-glow: rgba(0, 255, 240, 0.4);
-            --bg-dark: #050810;
-            --card-bg: rgba(20, 20, 20, 0.7);
+            --primary-glow: rgba(0, 255, 240, 0.3);
+            --bg-dark: #020408; 
+            --card-bg: rgba(15, 20, 30, 0.4);
             --text-main: #ffffff;
-            --text-dim: #cfcfcf;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --text-dim: #94a3b8;
+            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            --nav-bg: rgba(2, 4, 8, 0.95);
         }
 
+        /* Basic Reset */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         html { scroll-behavior: smooth; }
         
         body { 
-            /* Fixed background - will not move during scroll */
-            background: radial-gradient(circle at center, #0a1220 0%, #050810 100%) no-repeat center center fixed;
+            background: radial-gradient(circle at center, #0a1628 0%, #020408 100%) no-repeat center center fixed;
             background-size: cover;
             background-color: var(--bg-dark);
             color: var(--text-main); 
@@ -36,192 +35,202 @@
         /* ===== Particle Background ===== */
         #particle-background {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             z-index: -1;
             pointer-events: none;
+            opacity: 0.6;
         }
 
-        /* ===== Navigation ===== */
+        /* ===== Navigation (Deep Dark & Pro) ===== */
         header {
             position: fixed;
             top: 0; width: 100%;
-            padding: 1.2rem 5%;
+            padding: 0.8rem 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(5, 8, 16, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 255, 240, 0.1);
-            z-index: 1000;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 255, 240, 0.12);
+            z-index: 2000;
         }
 
         header h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.3rem;
+            font-weight: 900;
             color: var(--primary);
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px var(--primary-glow);
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px var(--primary-glow);
         }
 
         nav a {
-            margin-left: 25px;
+            margin-left: 40px;
             color: var(--text-main);
             font-weight: 500;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             transition: var(--transition);
+            opacity: 0.7;
         }
 
-        nav a:hover { color: var(--primary); text-shadow: 0 0 8px var(--primary-glow); }
+        nav a:hover { opacity: 1; color: var(--primary); }
 
         .menu-toggle {
             display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 24px; height: 18px;
             cursor: pointer;
-            background: none;
-            border: none;
-            z-index: 1001;
+            background: none; border: none;
+            z-index: 3000;
         }
 
         .menu-toggle span {
-            display: block;
-            width: 25px;
-            height: 2px;
-            background: var(--primary);
-            margin: 5px 0;
-            transition: var(--transition);
+            display: block; width: 100%; height: 2px;
+            background: var(--primary); transition: var(--transition);
         }
 
-        /* ===== Hero Section ===== */
+        /* ===== Mobile UI Optimization ===== */
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            header h1 { font-size: 1.1rem; }
+
+            nav {
+                position: fixed; top: 0; right: -100%;
+                width: 100%; height: 100vh;
+                background: rgba(1, 2, 5, 0.98);
+                backdrop-filter: blur(30px);
+                display: flex; flex-direction: column;
+                justify-content: center; align-items: center;
+                transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+            }
+
+            nav.active { right: 0; }
+
+            nav a {
+                margin: 1.5rem 0; font-size: 1.8rem;
+                font-family: 'Orbitron', sans-serif;
+                transform: translateY(30px); opacity: 0;
+            }
+
+            nav.active a { transform: translateY(0); opacity: 1; }
+
+            .menu-toggle.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+        }
+
+        /* ===== Hero Section (The Hook) ===== */
         .hero {
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 2rem;
+            display: flex; justify-content: center; align-items: center;
+            padding: 0 5%;
         }
 
         .hero-content {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 3rem;
-            border-radius: 30px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            max-width: 900px;
+            max-width: 1000px; text-align: center;
+            padding: 2rem;
         }
 
         .hero h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 5vw, 3.2rem);
-            color: var(--primary);
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            color: #fff;
             margin-bottom: 1rem;
-            line-height: 1.2;
+            line-height: 1.1;
+            text-transform: uppercase;
         }
 
-        .hero p { color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto 1.5rem; }
+        .hero h2 span { color: var(--primary); text-shadow: 0 0 30px var(--primary-glow); }
+
+        .hero p { 
+            color: var(--text-dim); font-size: 1.2rem; 
+            letter-spacing: 4px; text-transform: uppercase; 
+            margin-bottom: 3rem; font-weight: 300;
+        }
 
         .cta {
             display: inline-block;
-            padding: 16px 40px;
+            padding: 18px 50px;
             background: var(--primary);
             color: #000;
             font-weight: 700;
-            border-radius: 50px;
+            border-radius: 4px; /* More professional sharp edges */
             text-decoration: none;
             transition: var(--transition);
-            box-shadow: 0 0 20px var(--primary-glow);
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            box-shadow: 0 10px 30px rgba(0, 255, 240, 0.2);
         }
 
-        .cta:hover { transform: scale(1.05); box-shadow: 0 0 35px var(--primary); background: #ffffff; }
+        .cta:hover { transform: translateY(-5px); box-shadow: 0 15px 40px var(--primary-glow); background: #fff; }
 
-        /* ===== Sections General ===== */
-        section {
-            padding: 100px 5%;
-            max-width: 1200px;
-            margin: auto;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
+        /* ===== Grid & Pro Cards ===== */
+        section { padding: 120px 8%; max-width: 1400px; margin: auto; opacity: 0; transform: translateY(50px); transition: 1.2s ease; }
         section.visible { opacity: 1; transform: translateY(0); }
 
-        .section-title {
-            text-align: center;
-            font-family: 'Orbitron', sans-serif;
-            color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 3rem;
+        .section-title { 
+            font-family: 'Orbitron', sans-serif; color: var(--primary); 
+            font-size: 1.5rem; margin-bottom: 4rem; letter-spacing: 5px;
+            border-left: 4px solid var(--primary); padding-left: 20px;
         }
 
-        /* ===== Grid & Cards ===== */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        
+        .card { 
+            background: var(--card-bg); 
+            padding: 50px 40px; 
+            border-radius: 4px; 
+            border: 1px solid rgba(255, 255, 255, 0.03); 
+            transition: var(--transition); 
+            position: relative;
         }
 
-        .card {
-            background: var(--card-bg);
-            padding: 40px 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 255, 240, 0.1);
-            text-align: center;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .card:hover { 
+            background: rgba(0, 255, 240, 0.02);
+            border-color: var(--primary);
+            transform: translateY(-10px);
         }
 
-        .card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0, 255, 240, 0.15); }
-        .card h3 { color: var(--primary); font-family: 'Orbitron', sans-serif; margin-bottom: 15px; }
+        .card h3 { 
+            color: var(--primary); font-family: 'Orbitron'; 
+            font-size: 1.1rem; margin-bottom: 20px; letter-spacing: 2px;
+        }
+        
+        .card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.8; }
 
         .project-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-family: 'Orbitron', sans-serif;
-            border-radius: 5px;
-            transition: var(--transition);
-            letter-spacing: 1px;
+            display: inline-block; margin-top: 30px; padding: 12px 25px;
+            border: 1px solid rgba(0, 255, 240, 0.4); color: var(--primary);
+            text-decoration: none; font-size: 0.7rem; font-family: 'Orbitron';
+            transition: var(--transition); letter-spacing: 2px;
+        }
+        .project-link:hover { background: var(--primary); color: #000; border-color: var(--primary); }
+
+        /* ===== Footer (Ultra-Compact & Black) ===== */
+        footer { 
+            padding: 20px 5%; /* Tight vertical spacing */
+            text-align: center; 
+            background: #010204;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 100px;
         }
 
-        .project-link:hover {
-            background: var(--primary);
-            color: #000;
-            box-shadow: 0 0 15px var(--primary-glow);
-        }
-
-        /* ===== Footer ===== */
-        footer {
-            padding: 60px 5% 30px;
-            background: rgba(0, 0, 0, 0.9);
-            text-align: center;
-            border-top: 1px solid rgba(0, 255, 240, 0.1);
-        }
-
-        .footer-icons { display: flex; justify-content: center; gap: 20px; margin: 25px 0; }
+        footer p { font-size: 0.7rem; color: #444; letter-spacing: 2px; text-transform: uppercase; }
+        
+        .footer-icons { display: flex; justify-content: center; gap: 25px; margin-bottom: 10px; }
         .footer-icons a {
-            width: 50px; height: 50px; border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex; align-items: center; justify-content: center;
-            transition: var(--transition); border: 1px solid transparent;
+            color: var(--primary); opacity: 0.5; transition: var(--transition);
         }
-        .footer-icons a:hover { background: rgba(0, 255, 240, 0.1); border-color: var(--primary); transform: translateY(-5px); }
-        .footer-icons svg { width: 22px; fill: var(--primary); }
+        .footer-icons a:hover { 
+            opacity: 1; transform: scale(1.2); text-shadow: 0 0 10px var(--primary);
+        }
+        .footer-icons svg { width: 22px; fill: currentColor; }
     </style>
 </head>
 
@@ -231,84 +240,68 @@
 
 <header>
     <h1>THE KERRY MAX</h1>
-    
-    <button class="menu-toggle" id="mobile-menu" aria-label="Open Navigation">
-        <span></span>
-        <span></span>
-        <span></span>
+    <button class="menu-toggle" id="mobile-menu">
+        <span></span><span></span><span></span>
     </button>
-
     <nav id="nav-menu">
-        <a href="#skills" style="--i:1">Skills</a>
-        <a href="#projects" style="--i:2">Projects</a>
-        <a href="#contact" style="--i:3">Contact</a>
+        <a href="#skills" style="--i:1">Expertise</a>
+        <a href="#projects" style="--i:2">Portfolio</a>
+        <a href="#contact" style="--i:3">Connect</a>
     </nav>
 </header>
 
 <main>
     <section class="hero visible" style="opacity: 1; transform: none;">
         <div class="hero-content">
-            <h2>Visionary Design & Digital Art</h2>
-            <p>Graphic Design · Video Editing · Digital Illustration</p>
-            <p style="font-size: 0.9rem; margin-bottom: 2rem; opacity: 0.8; letter-spacing: 1px;">
-                🇬🇧 English · 🇲🇲 Burmese · 🇯🇵 Japanese
-            </p>
-            <a class="cta" href="mailto:kerrymax121@gmail.com">Contact Me</a>
+            <h2>DESIGNING <span>FUTURE</span><br>EXPERIENCES</h2>
+            <p>Visual Artist // Motion Designer // Developer</p>
+            <a class="cta" href="mailto:kerrymax121@gmail.com">Work With Me</a>
         </div>
     </section>
 
     <section id="skills">
-        <h2 class="section-title">Core Expertise</h2>
+        <h2 class="section-title">EXPERTISE</h2>
         <div class="grid">
             <div class="card">
-                <h3>Design</h3>
-                <p>Branding, UI/UX components, and modern typography layouts.</p>
+                <h3>VISUAL DESIGN</h3>
+                <p>Architecting brand identities and high-fidelity user interfaces with a focus on modern aesthetics.</p>
             </div>
             <div class="card">
-                <h3>Video</h3>
-                <p>Dynamic motion graphics, shorts, and cinematic color grading.</p>
+                <h3>MOTION GRAPHICS</h3>
+                <p>Translating complex ideas into fluid cinematic sequences and rhythmic motion-based storytelling.</p>
             </div>
             <div class="card">
-                <h3>Art</h3>
-                <p>Stylized digital illustrations and conceptual character art.</p>
+                <h3>DIGITAL ART</h3>
+                <p>Conceptualizing stylized character assets and immersive environmental illustrations.</p>
             </div>
             <div class="card">
-                <h3>Tech</h3>
-                <p>Front-end basics (HTML/CSS) and Game Dev (GDScript).</p>
+                <h3>DEVELOPMENT</h3>
+                <p>Bridging the gap between art and logic through frontend code and real-time engine implementation.</p>
             </div>
         </div>
     </section>
 
     <section id="projects">
-        <h2 class="section-title">Selected Works</h2>
+        <h2 class="section-title">PORTFOLIO</h2>
         <div class="grid">
             <div class="card">
-                <div>
-                    <h3>Midnight Manhwa</h3>
-                    <p>A curated digital reader platform and community hub for manhwa enthusiasts.</p>
-                </div>
-                <a href="https://thekerrymax.github.io/MidnightManhwa/" target="_blank" class="project-link">Visit Website →</a>
+                <h3>MIDNIGHT MANHWA</h3>
+                <p>A flagship digital reading hub designed for seamless navigation and community engagement.</p>
+                <a href="https://thekerrymax.github.io/MidnightManhwa/" target="_blank" class="project-link">VIEW CASE STUDY</a>
             </div>
-
             <div class="card">
-                <div>
-                    <h3>Interactive Art</h3>
-                    <p>Interactive experience and game mechanics built with Godot Engine.</p>
-                </div>
+                <h3>INTERACTIVE ENGINE</h3>
+                <p>Custom-built interactive environments exploring the boundaries of the Godot Engine.</p>
             </div>
-
             <div class="card">
-                <div>
-                    <h3>Motion Reel</h3>
-                    <p>High-pace editing reel featuring custom VFX and color grading.</p>
-                </div>
+                <h3>MOTION REEL</h3>
+                <p>A curated showcase of professional visual effects and post-production color grading.</p>
             </div>
         </div>
     </section>
 </main>
 
 <footer id="contact">
-    <p>© 2026 The Kerry Max | Available for Freelance</p>
     <div class="footer-icons">
         <a href="mailto:kerrymax121@gmail.com" aria-label="Email">
             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
@@ -317,126 +310,51 @@
             <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C16.7 2.5 12 2.5 12 2.5h-.1s-4.7 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 7.2.3 8.6.3 0 0 4.7 0 8.6-.3.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.5 14.5V8.5l6 3-6 3z"/></svg>
         </a>
     </div>
+    <p>© 2026 THE KERRY MAX / ALL RIGHTS RESERVED</p>
 </footer>
 
 <script>
-    /* --- Mobile Menu Logic --- */
-    const mobileMenuBtn = document.getElementById('mobile-menu');
+    // Menu logic
+    const menuBtn = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('nav a');
-
-    mobileMenuBtn.addEventListener('click', () => {
-        const isOpen = mobileMenuBtn.classList.toggle('active');
+    menuBtn.onclick = () => {
+        menuBtn.classList.toggle('active');
         navMenu.classList.toggle('active');
-        // Prevent body scroll when menu is open
-        document.body.style.overflow = isOpen ? 'hidden' : 'auto';
-    });
+    };
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuBtn.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-    });
-
-    /* --- Smoother, Larger Particles --- */
+    // Particles (Minimal & Smooth)
     const canvas = document.getElementById('particle-background');
     const ctx = canvas.getContext('2d');
     let particles = [];
-    const mouse = { x: null, y: null, radius: 120 };
-
-    const updateCoords = (e) => {
-        const pos = e.touches ? e.touches[0] : e;
-        mouse.x = pos.clientX;
-        mouse.y = pos.clientY;
-    };
-
-    window.addEventListener('mousemove', updateCoords);
-    window.addEventListener('touchstart', updateCoords);
-    window.addEventListener('touchmove', (e) => { updateCoords(e); }, { passive: true });
-    window.addEventListener('touchend', () => { mouse.x = null; mouse.y = null; });
-
-    class Particle {
-        constructor() { this.init(); }
-        init() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 10 + 10; // Bigger particles
-            this.vx = (Math.random() - 0.5) * 0.4; 
-            this.vy = (Math.random() - 0.5) * 0.4; 
-            this.friction = 0.98;
-            this.density = (Math.random() * 15) + 5;
-            this.shapeType = Math.floor(Math.random() * 3); 
-            this.rotation = Math.random() * Math.PI * 2;
-            this.spin = (Math.random() - 0.5) * 0.01;
-        }
-        draw() {
-            ctx.fillStyle = 'rgba(0, 255, 240, 0.15)';
-            ctx.strokeStyle = 'rgba(0, 255, 240, 0.35)';
-            ctx.lineWidth = 1.5;
-            ctx.beginPath();
-            ctx.save();
-            ctx.translate(this.x, this.y);
-            ctx.rotate(this.rotation);
-            if (this.shapeType === 0) ctx.arc(0, 0, this.size / 2, 0, Math.PI * 2);
-            else if (this.shapeType === 1) ctx.rect(-this.size / 2, -this.size / 2, this.size, this.size);
-            else {
-                ctx.moveTo(0, -this.size / 2);
-                ctx.lineTo(this.size / 2, this.size / 2);
-                ctx.lineTo(-this.size / 2, this.size / 2);
-                ctx.closePath();
-            }
-            ctx.fill(); ctx.stroke(); ctx.restore();
-        }
-        update() {
-            this.rotation += this.spin;
-            if (mouse.x !== null) {
-                let dx = mouse.x - this.x;
-                let dy = mouse.y - this.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < mouse.radius) {
-                    let force = (mouse.radius - distance) / mouse.radius;
-                    let dirX = (dx / distance) * force * this.density;
-                    let dirY = (dy / distance) * force * this.density;
-                    this.vx -= dirX * 0.03;
-                    this.vy -= dirY * 0.03;
-                }
-            }
-            this.vx *= this.friction;
-            this.vy *= this.friction;
-            this.x += this.vx;
-            this.y += this.vy;
-            if (this.x < -40) this.x = canvas.width + 40;
-            if (this.x > canvas.width + 40) this.x = -40;
-            if (this.y < -40) this.y = canvas.height + 40;
-            if (this.y > canvas.height + 40) this.y = -40;
-        }
-    }
-
     function init() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        particles = [];
-        let count = (window.innerWidth < 768) ? 30 : 75;
-        for (let i = 0; i < count; i++) { particles.push(new Particle()); }
+        particles = Array.from({length: 60}, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 1.5,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3
+        }));
     }
-
     function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => { p.update(); p.draw(); });
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy;
+            if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            ctx.fillStyle = 'rgba(0, 255, 240, 0.2)';
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
+        });
         requestAnimationFrame(animate);
     }
+    window.onresize = init; init(); animate();
 
-    init(); animate();
-    window.addEventListener('resize', init);
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('section').forEach(s => observer.observe(s));
+    // Intersection Observer
+    const obs = new IntersectionObserver((es) => {
+        es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, {threshold: 0.1});
+    document.querySelectorAll('section').forEach(s => obs.observe(s));
 </script>
 
 </body>
