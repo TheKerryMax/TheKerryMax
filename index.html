@@ -54,7 +54,7 @@ nav a {
   margin-left: 25px;
   font-weight: 600;
   color: #ffffff;
-  text-decoration: none;
+  text-decoration: none; /* REMOVE UNDERLINE */
   transition: color 0.3s, text-shadow 0.3s;
 }
 nav a:hover { color: #00d8c0; text-shadow: 0 0 4px #00d8c022; }
@@ -83,6 +83,8 @@ nav a:hover { color: #00d8c0; text-shadow: 0 0 4px #00d8c022; }
   color: #cccccc;
   margin-bottom: 2rem;
 }
+
+/* ===== CTA / Contact Button ===== */
 .cta {
   display: inline-block;
   padding: 12px 30px;
@@ -92,6 +94,7 @@ nav a:hover { color: #00d8c0; text-shadow: 0 0 4px #00d8c022; }
   border-radius: 8px;
   position: relative;
   overflow: hidden;
+  text-decoration: none; /* REMOVE UNDERLINE */
   transition: background 0.3s;
 }
 .cta::after {
@@ -166,16 +169,17 @@ nav a:hover { color: #00d8c0; text-shadow: 0 0 4px #00d8c022; }
 footer {
   text-align: center;
   padding: 30px 0;
-  border-top: 1px solid #222;
-  color: #777;
+  background: #0f0f0f; /* Dark gray, same as hero background */
+  color: #fff;
   font-size: 0.9rem;
   position: relative;
   z-index: 1;
 }
 footer a {
   color: #00fff0;
+  text-decoration: none; /* REMOVE UNDERLINE */
+  margin: 0 10px;
   transition: color 0.3s, text-shadow 0.3s;
-  text-decoration: none;
 }
 footer a:hover { color: #00d8c0; text-shadow: 0 0 8px #00d8c0; }
 
@@ -208,7 +212,7 @@ footer a:hover { color: #00d8c0; text-shadow: 0 0 8px #00d8c0; }
   <section class="hero">
     <h2>Artist, Graphic Designer & Video Editor</h2>
     <p>Creating digital art, animations, and visual content with creativity and style. Multilingual in English, Burmese, and Japanese.</p>
-    <a href="#contact" class="cta">Contact Me</a>
+    <a href="mailto:kerrymax121@gmail.com" class="cta">Contact Me</a>
   </section>
 
   <!-- Skills Section -->
@@ -258,14 +262,14 @@ footer a:hover { color: #00d8c0; text-shadow: 0 0 8px #00d8c0; }
   <!-- Footer -->
   <footer id="contact">
     © 2026 The Kerry Max | 
-    <a href="mailto:kerrymax121@gmail.com">Email Me</a> | 
+    <a href="mailto:kerrymax121@gmail.com">Email Me</a>
     <a href="https://www.youtube.com/@thekerrymax-121" target="_blank">YouTube Channel</a>
   </footer>
 
 </div>
 
 <script>
-// ===== Particle Background Script (Rotate + Big to Small) =====
+// ===== Particle Background Script =====
 const canvas = document.getElementById('particle-background');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -278,7 +282,7 @@ class Particle {
   constructor(){
     this.x = Math.random()*canvas.width;
     this.y = Math.random()*canvas.height;
-    this.size = Math.random()*12 + 3; // big → small
+    this.size = Math.random()*12 + 3;
     this.speedX = (Math.random()-0.5)*0.5;
     this.speedY = (Math.random()-0.5)*0.5;
     this.color = colors[Math.floor(Math.random()*colors.length)];
@@ -302,13 +306,8 @@ class Particle {
     ctx.rotate(this.angle);
     ctx.beginPath();
     switch(this.shape){
-      case 'circle':
-        ctx.arc(0,0,this.size,0,Math.PI*2);
-        ctx.fill();
-        break;
-      case 'square':
-        ctx.fillRect(-this.size/2,-this.size/2,this.size,this.size);
-        break;
+      case 'circle': ctx.arc(0,0,this.size,0,Math.PI*2); ctx.fill(); break;
+      case 'square': ctx.fillRect(-this.size/2,-this.size/2,this.size,this.size); break;
       case 'triangle':
         ctx.moveTo(0,-this.size);
         ctx.lineTo(-this.size,this.size);
@@ -333,14 +332,11 @@ class Particle {
 }
 
 const particles = [];
-for(let i=0;i<120;i++) particles.push(new Particle());
+for(let i=0;i<96;i++) particles.push(new Particle());
 
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach(p=>{
-    p.update();
-    p.draw();
-  });
+  particles.forEach(p=>{ p.update(); p.draw(); });
   requestAnimationFrame(animate);
 }
 animate();
