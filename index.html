@@ -1,37 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>The Kerry Max | Japanese Language Teacher & Page Administrator</title>
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Kerry Max | Japanese Language Teacher & Page Administrator</title>
+  
   <meta name="description" content="The Kerry Max is a Japanese Language Teacher (N3 level), Page Administrator, and multi-skilled professional specializing in design, translation, and digital content.">
   <meta name="keywords" content="The Kerry Max, Japanese teacher, N3 Japanese, page administrator, graphic design, translator">
   <meta name="author" content="The Kerry Max">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* ======= Reset & Base ======= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ======= Container ======= */
+    .container {
+      max-width: 900px;
+      text-align: center;
+      padding: 30px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    /* ======= Heading ======= */
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      color: #00fff0;
+      margin-bottom: 10px;
+    }
+
+    .divider {
+      width: 80px;
+      height: 4px;
+      background: #00fff0;
+      margin: 15px auto 25px;
+      border-radius: 2px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #cccccc;
+      margin-bottom: 20px;
+    }
+
+    img {
+      max-width: 300px;
+      width: 100%;
+      border-radius: 15px;
+      margin-top: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 15px rgba(0, 255, 240, 0.3);
+    }
+    img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 25px rgba(0, 255, 240, 0.6);
+    }
+
+    /* ======= Call to Action ======= */
+    .cta {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: #00fff0;
+      color: #000;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+    .cta:hover {
+      background: #00d8c0;
+    }
+
+    /* ======= Responsive ======= */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      img {
+        max-width: 80%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h1>The Kerry Max</h1>
-  <div class="divider"></div>
-  <p>Japanese Language Teacher & Page Administrator</p>
+  <div class="container">
+    <h1>The Kerry Max</h1>
+    <div class="divider"></div>
+    <p>Japanese Language Teacher & Page Administrator</p>
 
-  <p>
-    I am a multi-skilled professional with experience in graphic design,
-    Japanese language teaching (N3 level), page administration, video editing,
-    translation (Japanese–English), and Microsoft Office.
-    I focus on quality work, responsibility, and continuous improvement.
-  </p>
+    <p>
+      I am a multi-skilled professional with experience in graphic design,
+      Japanese language teaching (N3 level), page administration, video editing,
+      translation (Japanese–English), and Microsoft Office.
+      I focus on quality work, responsibility, and continuous improvement.
+    </p>
 
-  <img src="hero.jpg" alt="My Image">
-</div>
+    <img src="hero.jpg" alt="The Kerry Max Portrait">
 
+    <br>
+    <a href="#contact" class="cta">Contact Me</a>
+  </div>
 
 </body>
 </html>
-
-
-
-
